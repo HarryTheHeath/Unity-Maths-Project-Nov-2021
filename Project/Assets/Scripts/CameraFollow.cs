@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    public float CameraHeightOffset = 6;
+    public float CameraHeightOffset = 0.06f;
     public float CameraPositionOffset = 1;
     public GameObject target;
     
@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
             var cameraCoordinates = transform.position;
             var targetCoordinates = target.transform.position;
             var newCameraCoordinates = Vector3.Lerp(cameraCoordinates, targetCoordinates, 0.01f);
-            transform.position = new Vector3(newCameraCoordinates.x, CameraHeightOffset, newCameraCoordinates.z - CameraPositionOffset);
+            transform.position = new Vector3(newCameraCoordinates.x, newCameraCoordinates.y + CameraHeightOffset, newCameraCoordinates.z);
         }
     }
 }
